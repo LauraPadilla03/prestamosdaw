@@ -93,11 +93,7 @@ Consultar historial de préstamos (SI ESTÁ IMPLEMENTADO / PENDIENTE)
 
 El proyecto permite gestionar préstamos de portátiles de forma digital, aplicando arquitectura full stack y control de estado entre frontend y backend.
 
-🙏 Contribuciones y agradecimientos
-
-# 🙏 Contribuciones y agradecimientos
-
-# 🙏 Contribuciones y agradecimientos
+## 🙏 Contribuciones y agradecimientos
 
 Este proyecto ha sido realizado de forma individual como parte del ciclo formativo DAW.
 
@@ -105,14 +101,13 @@ Agradezco al profesorado por la guía durante el desarrollo del proyecto y a los
 
 También agradezco a mi compañera y amiga Diana por el apoyo y la motivación durante el desarrollo del proyecto.
 
-📄 Licencia
+## 📄 Licencia
+
 Uso educativo.
 
+## 📞 Contacto
 
-📞 Contacto
-
-
-**Nombre:** Laura Padilla Cobacho  
-**Ciclo:** Desarrollo de Aplicaciones Web (DAW)  
-**Año:** 2026  
-**Email:** laura.padilla@a.vedrunasevillasj.es
+Nombre: Laura Padilla Cobacho  
+Ciclo: Desarrollo de Aplicaciones Web (DAW)  
+Año: 2026  
+Email: laura.padilla@a.vedrunasevillasj.es
