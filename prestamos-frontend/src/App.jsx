@@ -1,80 +1,86 @@
 import { useState } from "react";
+import "./App.css";
 
 function App() {
-  // =========================
-  //  ESTADOS LOGIN
-  // =========================
   const [usuario, setUsuario] = useState("");
+
   const [password, setPassword] = useState("");
+
   const [usuarioLogueado, setUsuarioLogueado] = useState(null);
+
   const [errorLogin, setErrorLogin] = useState("");
-  // =========================
-  //  ESTADOS PRÉSTAMO
-  // =========================
+
   const [fechaFin, setFechaFin] = useState("");
+
   const [fechaInicio, setFechaInicio] = useState("");
 
-  //  Mensaje final
   const [mensaje, setMensaje] = useState("");
 
-  // =========================
-  //  ESTADOS HISTORIAL (AÑADIDO)
-  // =========================
   const [prestamos, setPrestamos] = useState([]);
+
   const [mostrarHistorial, setMostrarHistorial] = useState(false);
 
-  // =========================
-  //  LOGIN
-  // =========================
   const login = async () => {
     const res = await fetch("http://localhost:8080/auth/login", {
       method: "POST",
+
       headers: { "Content-Type": "application/json" },
+
       body: JSON.stringify({
         nombre: usuario,
+
         password: password,
       }),
     });
 
     if (!res.ok) {
       setErrorLogin("Usuario o contraseña incorrecta");
+
       return;
     }
 
     const data = await res.json();
-    setUsuarioLogueado(data);
-    setErrorLogin(""); // limpia el error si va bien
+
+    setUsuarioLogueado({
+      id: data.id,
+
+      nombre: data.nombre,
+    });
+
+    setErrorLogin("");
   };
 
   const logout = () => {
     setUsuarioLogueado(null);
+
     setUsuario("");
+
     setPassword("");
+
     setFechaInicio("");
+
     setFechaFin("");
+
     setMensaje("");
+
     setPrestamos([]);
+
     setMostrarHistorial(false);
   };
 
-  // =========================
-  //  PEDIR PORTÁTIL
-  // =========================
   const pedirPortatil = async () => {
-    console.log("boton pedir pulsado");
-
     const res = await fetch("http://localhost:8080/prestamos", {
       method: "POST",
+
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        fechaInicio: fechaInicio,
-        fechaFin: fechaFin,
-      }),
+
+      body: JSON.stringify({ fechaInicio, fechaFin }),
     });
 
     const data = await res.json();
 
     const inicio = new Date(data.fechaInicio).toLocaleDateString("es-ES");
+
     const fin = new Date(data.fechaFin).toLocaleDateString("es-ES");
 
     setMensaje(
@@ -82,96 +88,149 @@ function App() {
     );
   };
 
-  // =========================
-  //  DEVOLVER PORTÁTIL
-  // =========================
   const devolverPortatil = async (id) => {
-    const res = await fetch(`http://localhost:8080/prestamos/${id}/devolver`, {
-      method: "PUT",
-    });
+    const res = await fetch(
+      `http://localhost:8080/prestamos/${id}/devolver`,
+
+      { method: "PUT" },
+    );
 
     const data = await res.json();
 
     setMensaje(`Portátil ${data.portatil.codigo} devuelto correctamente 😌`);
   };
 
-  // =========================
-  //  CARGAR HISTORIAL (AÑADIDO)
-  // =========================
   const cargarPrestamos = async () => {
     const res = await fetch(
       `http://localhost:8080/prestamos/usuario/${usuarioLogueado.id}`,
     );
 
     const data = await res.json();
+
     setPrestamos(data);
   };
 
-  // =========================
-  //  RENDER
-  // =========================
   return (
-    <div>
-      <h1>Portátiles</h1>
+    <div className="app">
+      {/* ================= LANDING ================= */}
 
-      {/* ================= LOGIN ================= */}
       {!usuarioLogueado ? (
-        <div>
-          <h2>Login</h2>
+        <div className="landing">
+          {/* HEADER VERDE */}
 
-          <input
-            placeholder="Nombre completo"
-            value={usuario}
-            onChange={(e) => setUsuario(e.target.value)}
-            lang="es"
-          />
+          <div className="top-header">
+            <div className="social-icons">
+              <a href="https://www.facebook.com/vedrunasevilla/">
+                <img src="/facebook.png" alt="Facebook" />
+              </a>
 
-          <input
-            type="password"
-            placeholder="Contraseña"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            lang="es"
-          />
+              <a href="https://x.com/fpvedrunasev">
+                <img src="/twitter.png" alt="Twitter" />
+              </a>
 
-          <button onClick={login}>Entrar</button>
-          {errorLogin && <p style={{ color: "red" }}> {errorLogin} </p>}
+              <a href="https://www.instagram.com/fpvedrunasevilla/">
+                <img src="/instagram.png" alt="Instagram" />
+              </a>
+            </div>
+          </div>
+
+          {/* LOGO */}
+
+          <div className="logo-section">
+            <img src="/Logo-VS-1.png" alt="Logo" />
+          </div>
+
+          <div className="separator-line"></div>
+
+          {/* MENÚ */}
+
+          <nav className="menu-navbar">
+            <nav className="menu-navbar">
+              <ul className="menu">
+                {/* 🔥 MODIFICADO: Enlaces limpios apuntando a las tres secciones */}
+                <li>
+                  <a href="#top">INICIO</a>
+                </li>
+                <li>
+                  <a href="#solicitud-form">SERVICIOS</a>
+                </li>
+                <li>
+                  <a href="#contacto">CONTACTO</a>
+                </li>
+              </ul>
+            </nav>
+
+            {/* HERO */}
+            {/* No requiere ID específico ya que "INICIO" subirá al tope del HTML */}
+            <section className="hero-image">
+              <img src="/hero.png" alt="Instituto" />
+            </section>
+
+            {/* LOGIN / FORMULARIO */}
+            {/* 🔥 MODIFICADO: Cambiado el id a "solicitud-form" para enlazar con SERVICIOS */}
+            <div id="solicitud-form" className="scroll-area">
+              <div className="login-card">
+                <h3>Solicita tu portátil</h3>
+
+                <input
+                  placeholder="Nombre completo"
+                  value={usuario}
+                  onChange={(e) => setUsuario(e.target.value)}
+                />
+
+                <input
+                  type="password"
+                  placeholder="Contraseña"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+
+                <button onClick={login}>Entrar</button>
+
+                {errorLogin && <p style={{ color: "red" }}>{errorLogin}</p>}
+              </div>
+            </div>
+
+            {/* FOOTER */}
+            {/* Mantiene el id para CONTACTO */}
+            <footer id="contacto">
+              <h3>Contacto</h3>
+              <p>Correo: laura.padilla@a.vedrunasevillasj.es</p>
+            </footer>
+          </nav>
         </div>
       ) : (
         <>
-          <h4>
-            Bienvenido/a {usuarioLogueado.nombre}, selecciona la fecha de
-            recogida y entrega de tu portátil.
-          </h4>
+          {/* ================= DASHBOARD ================= */}
+
+          <h1>Portátiles</h1>
+
+          <h4>Bienvenido/a {usuarioLogueado.nombre}</h4>
 
           <button onClick={logout}>Cerrar sesión</button>
 
-          {/* ================= PRÉSTAMOS ================= */}
           <input
             type="date"
             value={fechaInicio}
             onChange={(e) => setFechaInicio(e.target.value)}
-            lang="es"
           />
 
           <input
             type="date"
             value={fechaFin}
             onChange={(e) => setFechaFin(e.target.value)}
-            lang="es"
           />
 
           <button onClick={pedirPortatil}>Pedir portátil</button>
 
           {mensaje && <p>{mensaje}</p>}
 
-          {/* ================= DEVOLVER FIJO ================= */}
           <button onClick={() => devolverPortatil(1)}>Devolver portátil</button>
 
-          {/* ================= HISTORIAL ================= */}
           <button
             onClick={() => {
               setMostrarHistorial(!mostrarHistorial);
+
               cargarPrestamos();
             }}
           >
@@ -184,15 +243,9 @@ function App() {
                 <div key={p.id}>
                   <p>Portátil: {p.portatil.codigo}</p>
 
-                  <p>
-                    Fecha recogida:{" "}
-                    {new Date(p.fechaInicio).toLocaleDateString("es-ES")}
-                  </p>
+                  <p>{new Date(p.fechaInicio).toLocaleDateString("es-ES")}</p>
 
-                  <p>
-                    Fecha entrega:{" "}
-                    {new Date(p.fechaFin).toLocaleDateString("es-ES")}
-                  </p>
+                  <p>{new Date(p.fechaFin).toLocaleDateString("es-ES")}</p>
 
                   <p>Estado: {p.estado}</p>
 
