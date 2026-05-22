@@ -1,8 +1,14 @@
+/* =========================
+   RESET GLOBAL (evita bugs raros de tamaños)
+========================= */
 
-/* Evita que los paddings y bordes sumen ancho extra */
 *, *::before, *::after {
   box-sizing: border-box;
 }
+
+/* =========================
+   ESTRUCTURA BASE (pantalla completa sin scroll raro)
+========================= */
 
 html,
 body,
@@ -14,23 +20,26 @@ body,
   padding: 0;
 }
 
+/* =========================
+   ESTILO GENERAL DE LA APP
+========================= */
+
 body {
   font-family: Arial, sans-serif;
-  background: #f5f5f5;
+  background: #f5f5f5; /* gris suave de fondo */
 }
 
 /* =========================
-   HEADER VERDE (REDES)
+   HEADER VERDE (REDES SOCIALES)
+   - barra superior con iconos
 ========================= */
+
 .top-header {
   background: #9fc63b;
   width: 100%;
-  box-sizing: border-box;
-
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
-
   padding: 6px 20px;
 }
 
@@ -45,16 +54,15 @@ body {
 }
 
 /* =========================
-   LOGO SECTION
+   LOGO PRINCIPAL
 ========================= */
+
 .logo-section {
   background: white;
   width: 100%;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   padding: 18px 0;
 }
 
@@ -63,8 +71,9 @@ body {
 }
 
 /* =========================
-   LÍNEA
+   SEPARADOR VISUAL (línea fina)
 ========================= */
+
 .separator-line {
   width: 100%;
   height: 1px;
@@ -72,34 +81,32 @@ body {
 }
 
 /* =========================
-   MENÚ STICKY
+   NAVBAR FIJO (sticky)
+   - se queda arriba al hacer scroll
 ========================= */
+
 .menu-navbar {
   background: white;
   width: 100%;
-
   position: sticky;
   top: 0;
   z-index: 1000;
-
   border-bottom: 1px solid #eaeaea;
 }
 
+/* lista del menú centrada */
 .menu {
   list-style: none;
-
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap; /* 🔥 MODIFICADO: Permite que los enlaces bajen de línea en móviles y no empujen la pantalla */
-
-  gap: 15px 45px; /* 🔥 MODIFICADO: 15px de espacio si saltan de línea, 45px a los lados */
-
+  flex-wrap: wrap;
+  gap: 15px 45px;
   margin: 0;
   padding: 14px 0;
 }
 
-/* ESTO ES LO IMPORTANTE (ADIÓS AZUL) */
+/* links del menú */
 .menu a {
   text-decoration: none;
   color: black;
@@ -107,17 +114,15 @@ body {
   transition: 0.2s;
 }
 
-.menu a:visited {
-  color: black;
-}
-
+/* hover del menú */
 .menu li a:hover {
   color: #9fc63b;
 }
 
 /* =========================
-   HERO IMAGE
+   HERO (imagen grande principal)
 ========================= */
+
 .hero-image {
   position: relative;
   height: 70vh;
@@ -131,12 +136,12 @@ body {
 }
 
 /* =========================
-   LOGIN
+   ZONA LOGIN (centrado en pantalla)
 ========================= */
+
 .scroll-area {
   width: 100%;
   min-height: 100vh;
-
   padding: 80px 40px;
 
   display: flex;
@@ -144,34 +149,32 @@ body {
   align-items: flex-start;
 
   background: #f5f5f5;
-  /* 💡 Corregido automáticamente gracias a la regla universal del principio */
 }
+
+/* =========================
+   TARJETA LOGIN (card blanca)
+========================= */
 
 .login-card {
   width: 360px;
   background: #ffffff;
-
   padding: 28px;
   border-radius: 14px;
-
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-
   text-align: center;
-
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
+/* título login */
 .login-card h3 {
   margin-bottom: 18px;
   font-weight: 600;
   color: #575454;
 }
 
-/* inputs más modernos */
+/* inputs login */
 .login-card input {
   width: 100%;
-  box-sizing: border-box;
-
   padding: 12px 14px;
   margin: 10px 0;
 
@@ -180,16 +183,15 @@ body {
   border-radius: 10px;
 
   font-size: 14px;
-  color: rgba(0, 0, 0, 0.816);
-
   outline: none;
+
+  color: rgba(0, 0, 0, 0.764);
 }
 
-/* botón verde pro */
+/* botón login */
 .login-card button {
   width: 100%;
   padding: 12px;
-
   margin-top: 12px;
 
   background: #9fc63b;
@@ -199,39 +201,232 @@ body {
   border-radius: 12px;
 
   font-weight: 600;
-  font-size: 14px;
-
   cursor: pointer;
-  transition: 0.2s;
 }
 
+/* hover botón login */
 .login-card button:hover {
   background: #88b632;
 }
 
+/* =========================
+   FOOTER (verde inferior)
+========================= */
+
 footer {
   background: #9fc63b;
   color: white;
-
   width: 100%;
   padding: 30px 20px;
-
   text-align: center;
-
   margin-top: 80px;
-  /* 💡 Corregido automáticamente gracias a la regla universal del principio */
 }
 
-footer h3 {
-  margin: 0 0 10px 0;
+/* =========================
+   DASHBOARD (zona principal usuario)
+========================= */
+
+.dashboard-container {
+  min-height: 100vh;
+  background: #f5f5f5;
+  width: 100%;
+}
+
+/* header dashboard */
+.dashboard-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 15px 30px;
+  background: white;
+  border-bottom: 1px solid #eaeaea;
+}
+
+/* logo dashboard */
+.dashboard-logo img {
+  width: 130px;
+}
+
+/* contenido principal dashboard */
+.dashboard-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* texto bienvenida */
+.dashboard-welcome h1 {
+  font-size: 28px;
+  color: #333;
+  margin: 0 0 5px 0;
+}
+
+.dashboard-welcome h4 {
   font-size: 16px;
+  color: #666;
+  font-weight: 400;
+  margin: 0 0 20px 0;
 }
 
-footer p {
-  margin: 0;
+/* =========================
+   GRID DE TARJETAS
+========================= */
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 30px;
+}
+
+/* =========================
+   TARJETAS
+========================= */
+
+.card-solicitar,
+.card-historial {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* =========================
+   INPUT FECHA (bonito y limpio)
+========================= */
+
+.card-solicitar input[type="text"] {
+  width: 100%;
+  padding: 14px 16px;
+
+  background: #f9f9f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+
+  font-size: 15px;
+  color: #333;
+
+  font-family: inherit;
+  outline: none;
+
+  margin-bottom: 12px;
+
+  letter-spacing: 1px;
+  transition: 0.2s;
+}
+
+/* foco input */
+.card-solicitar input[type="text"]:focus {
+  border-color: #9fc63b;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(159, 198, 59, 0.18);
+  transform: translateY(-1px);
+}
+
+/* placeholder */
+.card-solicitar input[type="text"]::placeholder {
+  color: #9ca3af;
+}
+
+/* =========================
+   BOTONES GENERALES
+========================= */
+
+.primary-btn {
+  width: 100%;
+  padding: 14px;
+  background: #9fc63b;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.primary-btn:hover {
+  background: #88b632;
+}
+
+/* botón secundario */
+.secondary-btn {
+  width: 100%;
+  padding: 14px;
+  background: #f1f5f9;
+  color: #333;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* botón devolver */
+.return-btn {
+  padding: 8px 12px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+/*botón cerrar sesión*/
+
+.logout-btn {
+  background: #9fc63b;
+  color: white;
+
+  border: none;
+  border-radius: 999px;
+
+  padding: 10px 18px;
+
   font-size: 14px;
-  opacity: 0.9;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+
+  box-shadow: 0 6px 16px rgba(159, 198, 59, 0.25);
 }
 
+.logout-btn:hover {
+  background: #88b632;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(159, 198, 59, 0.35);
+}
 
+.logout-btn:active {
+  transform: translateY(0px);
+  box-shadow: 0 5px 12px rgba(159, 198, 59, 0.2);
+}
+/* =========================
+   HISTORIAL
+========================= */
 
+.historial-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+/* =========================
+   MENSAJES (errores y feedback)
+========================= */
+
+.mensaje-error {
+  color: #dc2626; /* rojo error */
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.mensaje-feedback {
+  color: #374151; /* gris neutro */
+  margin-top: 10px;
+}
