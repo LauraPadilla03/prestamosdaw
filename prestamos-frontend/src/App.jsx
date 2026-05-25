@@ -2,18 +2,43 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
+
+  // Estado del usuario (login)
+  // Guarda lo que escribe el usuario en el input de nombre
   const [usuario, setUsuario] = useState("");
+  // Guarda la contraseña del login
   const [password, setPassword] = useState("");
+
+  // Usuario autenticado (null si no hay sesión)
+  // Aquí se guarda el usuario que ha hecho login correctamente
   const [usuarioLogueado, setUsuarioLogueado] = useState(null);
+
+  // Mensaje de error en login
+  // Se usa si el backend rechaza el login
   const [errorLogin, setErrorLogin] = useState("");
+
+  // Fechas del préstamo
+  // Fecha de inicio del préstamo
   const [fechaFin, setFechaFin] = useState("");
+  // Fecha de fin del préstamo
   const [fechaInicio, setFechaInicio] = useState("");
+
+  // Mensajes de feedback (éxito / error)
+  // Mensaje general cuando todo va bien
   const [mensaje, setMensaje] = useState("");
+  // Mensajes de error en préstamos
   const [error, setError] = useState("");
+
+  // Lista de préstamos del usuario
+  // Array con los préstamos que devuelve el backend
   const [prestamos, setPrestamos] = useState([]);
+
+  // Control de visibilidad del historial
+  // true = se muestra el historial, false = oculto
   const [mostrarHistorial, setMostrarHistorial] = useState(false);
 
-  // 🔥 AUTOFORMATO FECHA
+  // Formatea la fecha mientras el usuario escribe (DD/MM/AAAA)
+  // Convierte lo que escribe el usuario en formato legible
   const formatearFecha = (value) => {
     let v = value.replace(/\D/g, "");
 
@@ -23,6 +48,7 @@ function App() {
     let mes = v.slice(2, 4);
     let año = v.slice(4, 8);
 
+    // Validación básica de día y mes
     if (dia.length === 2 && parseInt(dia) > 31) dia = "31";
     if (mes.length === 2 && parseInt(mes) > 12) mes = "12";
 
@@ -31,7 +57,8 @@ function App() {
     return `${dia}/${mes}/${año}`;
   };
 
-  // 🚫 VALIDAR FECHAS PASADAS
+  // Comprueba si una fecha es anterior a hoy
+  // Evita pedir préstamos con fechas pasadas
   const esFechaPasada = (fechaStr) => {
     const partes = fechaStr.split("/");
 
@@ -49,12 +76,15 @@ function App() {
     return fecha < hoy;
   };
 
-  // 🚀 CONVERTIR FECHA A YYYY-MM-DD
+  // Convierte fecha de DD/MM/AAAA a YYYY-MM-DD (formato backend)
+  // Esto es necesario porque el backend suele usar formato ISO
   const convertirFecha = (f) => {
     const [d, m, a] = f.split("/");
     return `${a}-${m}-${d}`;
   };
 
+  // Login contra backend
+  // Hace petición al endpoint de autenticación
   const login = async () => {
     const res = await fetch("http://localhost:8080/auth/login", {
       method: "POST",
@@ -72,6 +102,7 @@ function App() {
 
     const data = await res.json();
 
+    // Guardamos usuario logueado
     setUsuarioLogueado({
       id: data.id,
       nombre: data.nombre,
@@ -80,6 +111,8 @@ function App() {
     setErrorLogin("");
   };
 
+  // Logout y reset de estado
+  // Limpia toda la sesión
   const logout = () => {
     setUsuarioLogueado(null);
     setUsuario("");
@@ -92,10 +125,12 @@ function App() {
     setMostrarHistorial(false);
   };
 
+  // Solicitar préstamo de portátil
   const pedirPortatil = async () => {
     setMensaje("");
     setError("");
 
+    // Validación de fechas
     if (esFechaPasada(fechaInicio) || esFechaPasada(fechaFin)) {
       setError("La fecha introducida no es válida.");
       return;
@@ -106,6 +141,7 @@ function App() {
       return;
     }
 
+    // Petición al backend para crear préstamo
     const res = await fetch("http://localhost:8080/prestamos", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -120,6 +156,7 @@ function App() {
     setMensaje(`Portátil ${data.portatil.codigo} asignado correctamente.`);
   };
 
+  // Marcar préstamo como devuelto
   const devolverPortatil = async (id) => {
     await fetch(`http://localhost:8080/prestamos/${id}/devolver`, {
       method: "PUT",
@@ -129,6 +166,7 @@ function App() {
     cargarPrestamos();
   };
 
+  // Cargar historial de préstamos del usuario
   const cargarPrestamos = async () => {
     const res = await fetch(
       `http://localhost:8080/prestamos/usuario/${usuarioLogueado.id}`
@@ -145,6 +183,7 @@ function App() {
       {!usuarioLogueado ? (
         <div className="landing">
 
+          {/* Barra superior redes sociales */}
           <div className="top-header">
             <div className="social-icons">
               <a href="https://www.facebook.com/vedrunasevilla/">
@@ -159,12 +198,15 @@ function App() {
             </div>
           </div>
 
+          {/* Logo */}
           <div className="logo-section">
             <img src="/Logo-VS-1.png" alt="Logo" />
           </div>
 
+          {/* Separador visual */}
           <div className="separator-line"></div>
 
+          {/* Menú navegación */}
           <nav className="menu-navbar">
             <ul className="menu">
               <li><a href="#top">INICIO</a></li>
@@ -173,10 +215,12 @@ function App() {
             </ul>
           </nav>
 
+          {/* Imagen principal */}
           <section className="hero-image" id="top">
             <img src="/hero.png" alt="Instituto" />
           </section>
 
+          {/* Login */}
           <div id="solicitud-form" className="scroll-area">
             <div className="login-card">
 
@@ -206,6 +250,7 @@ function App() {
             </div>
           </div>
 
+          {/* Footer */}
           <footer id="contacto">
             <h3>Contacto</h3>
             <p>Correo: laura.padilla@a.vedrunasevillasj.es</p>
@@ -215,6 +260,7 @@ function App() {
       ) : (
         <div className="dashboard-container">
 
+          {/* Header dashboard */}
           <div className="dashboard-header">
             <div className="dashboard-logo">
               <img src="/Logo-VS-1.png" alt="Logo" />
@@ -225,6 +271,7 @@ function App() {
             </button>
           </div>
 
+          {/* Contenido */}
           <div className="dashboard-content">
 
             <div className="dashboard-welcome">
@@ -234,6 +281,7 @@ function App() {
 
             <div className="dashboard-grid">
 
+              {/* Solicitar préstamo */}
               <div className="card-solicitar">
                 <h3>Solicitar préstamo</h3>
 
@@ -270,6 +318,7 @@ function App() {
                 )}
               </div>
 
+              {/* Historial */}
               <div className="card-historial">
                 <h3>Historial</h3>
 

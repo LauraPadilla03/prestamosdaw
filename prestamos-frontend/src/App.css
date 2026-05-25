@@ -1,15 +1,15 @@
-/* =========================
-   RESET GLOBAL (evita bugs raros de tamaños)
-========================= */
 
+
+/* Hace que padding y border no rompan el tamaño de los elementos */
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
 /* =========================
-   ESTRUCTURA BASE (pantalla completa sin scroll raro)
+   ESTRUCTURA BASE (pantalla completa sin scroll )
 ========================= */
 
+/* La app ocupa toda la pantalla sin márgenes ni scroll  */
 html,
 body,
 #root,
@@ -24,16 +24,17 @@ body,
    ESTILO GENERAL DE LA APP
 ========================= */
 
+/* Fuente global y fondo general gris claro */
 body {
   font-family: Arial, sans-serif;
-  background: #f5f5f5; /* gris suave de fondo */
+  background: #f5f5f5;
 }
 
 /* =========================
    HEADER VERDE (REDES SOCIALES)
-   - barra superior con iconos
 ========================= */
 
+/* Barra superior verde con iconos de redes */
 .top-header {
   background: #9fc63b;
   width: 100%;
@@ -43,11 +44,13 @@ body {
   padding: 6px 20px;
 }
 
+/* enlaces de redes sociales */
 .top-header a {
   margin-left: 10px;
   text-decoration: none;
 }
 
+/* iconos de redes sociales */
 .top-header img {
   width: 50px;
   height: 50px;
@@ -57,6 +60,7 @@ body {
    LOGO PRINCIPAL
 ========================= */
 
+/* sección blanca donde va el logo centrado */
 .logo-section {
   background: white;
   width: 100%;
@@ -66,6 +70,7 @@ body {
   padding: 18px 0;
 }
 
+/* tamaño del logo */
 .logo-section img {
   width: 160px;
 }
@@ -74,6 +79,7 @@ body {
    SEPARADOR VISUAL (línea fina)
 ========================= */
 
+/* línea separadora entre secciones */
 .separator-line {
   width: 100%;
   height: 1px;
@@ -82,9 +88,9 @@ body {
 
 /* =========================
    NAVBAR FIJO (sticky)
-   - se queda arriba al hacer scroll
 ========================= */
 
+/* barra de navegación fija al hacer scroll */
 .menu-navbar {
   background: white;
   width: 100%;
@@ -94,7 +100,7 @@ body {
   border-bottom: 1px solid #eaeaea;
 }
 
-/* lista del menú centrada */
+/* lista del menú */
 .menu {
   list-style: none;
   display: flex;
@@ -106,7 +112,7 @@ body {
   padding: 14px 0;
 }
 
-/* links del menú */
+/* enlaces del menú */
 .menu a {
   text-decoration: none;
   color: black;
@@ -114,21 +120,23 @@ body {
   transition: 0.2s;
 }
 
-/* hover del menú */
+/* hover de enlaces del menú */
 .menu li a:hover {
   color: #9fc63b;
 }
 
 /* =========================
-   HERO (imagen grande principal)
+   HERO (imagen principal grande)
 ========================= */
 
+/* contenedor de la imagen principal */
 .hero-image {
   position: relative;
   height: 70vh;
   overflow: hidden;
 }
 
+/* imagen del hero */
 .hero-image img {
   width: 100%;
   height: 100%;
@@ -136,9 +144,10 @@ body {
 }
 
 /* =========================
-   ZONA LOGIN (centrado en pantalla)
+   ZONA LOGIN
 ========================= */
 
+/* contenedor del login centrado */
 .scroll-area {
   width: 100%;
   min-height: 100vh;
@@ -151,10 +160,7 @@ body {
   background: #f5f5f5;
 }
 
-/* =========================
-   TARJETA LOGIN (card blanca)
-========================= */
-
+/* tarjeta del login */
 .login-card {
   width: 360px;
   background: #ffffff;
@@ -165,14 +171,14 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-/* título login */
+/* título del login */
 .login-card h3 {
   margin-bottom: 18px;
   font-weight: 600;
   color: #575454;
 }
 
-/* inputs login */
+/* inputs del login */
 .login-card input {
   width: 100%;
   padding: 12px 14px;
@@ -188,7 +194,7 @@ body {
   color: rgba(0, 0, 0, 0.764);
 }
 
-/* botón login */
+/* botón del login */
 .login-card button {
   width: 100%;
   padding: 12px;
@@ -204,15 +210,16 @@ body {
   cursor: pointer;
 }
 
-/* hover botón login */
+/* hover del botón login */
 .login-card button:hover {
   background: #88b632;
 }
 
 /* =========================
-   FOOTER (verde inferior)
+   FOOTER
 ========================= */
 
+/* footer inferior verde */
 footer {
   background: #9fc63b;
   color: white;
@@ -223,16 +230,17 @@ footer {
 }
 
 /* =========================
-   DASHBOARD (zona principal usuario)
+   DASHBOARD
 ========================= */
 
+/* contenedor principal dashboard */
 .dashboard-container {
   min-height: 100vh;
   background: #f5f5f5;
   width: 100%;
 }
 
-/* header dashboard */
+/* header del dashboard */
 .dashboard-header {
   position: sticky;
   top: 0;
@@ -248,25 +256,26 @@ footer {
   border-bottom: 1px solid #eaeaea;
 }
 
-/* logo dashboard */
+/* logo del dashboard */
 .dashboard-logo img {
   width: 130px;
 }
 
-/* contenido principal dashboard */
+/* contenido del dashboard */
 .dashboard-content {
   max-width: 1200px;
   margin: 0 auto;
   padding: 40px 20px;
 }
 
-/* texto bienvenida */
+/* bloque de bienvenida */
 .dashboard-welcome h1 {
   font-size: 28px;
   color: #333;
   margin: 0 0 5px 0;
 }
 
+/* subtítulo bienvenida */
 .dashboard-welcome h4 {
   font-size: 16px;
   color: #666;
@@ -275,19 +284,17 @@ footer {
 }
 
 /* =========================
-   GRID DE TARJETAS
+   GRID TARJETAS
 ========================= */
 
+/* grid responsive de tarjetas */
 .dashboard-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 30px;
 }
 
-/* =========================
-   TARJETAS
-========================= */
-
+/* tarjetas principales */
 .card-solicitar,
 .card-historial {
   background: white;
@@ -296,10 +303,7 @@ footer {
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
 }
 
-/* =========================
-   INPUT FECHA (bonito y limpio)
-========================= */
-
+/* inputs de tipo texto */
 .card-solicitar input[type="text"] {
   width: 100%;
   padding: 14px 16px;
@@ -320,7 +324,7 @@ footer {
   transition: 0.2s;
 }
 
-/* foco input */
+/* efecto focus del input */
 .card-solicitar input[type="text"]:focus {
   border-color: #9fc63b;
   background: white;
@@ -328,15 +332,16 @@ footer {
   transform: translateY(-1px);
 }
 
-/* placeholder */
+/* placeholder del input */
 .card-solicitar input[type="text"]::placeholder {
   color: #9ca3af;
 }
 
 /* =========================
-   BOTONES GENERALES
+   BOTONES
 ========================= */
 
+/* botón principal */
 .primary-btn {
   width: 100%;
   padding: 14px;
@@ -349,6 +354,7 @@ footer {
   transition: 0.2s;
 }
 
+/* hover botón principal */
 .primary-btn:hover {
   background: #88b632;
 }
@@ -373,10 +379,10 @@ footer {
   border-radius: 10px;
   font-size: 12px;
   cursor: pointer;
-  color:#000;
+  color: #000;
 }
-/*botón cerrar sesión*/
 
+/* botón logout */
 .logout-btn {
   background: #9fc63b;
   color: white;
@@ -396,20 +402,24 @@ footer {
   box-shadow: 0 6px 16px rgba(159, 198, 59, 0.25);
 }
 
+/* hover logout */
 .logout-btn:hover {
   background: #88b632;
   transform: translateY(-2px);
   box-shadow: 0 10px 22px rgba(159, 198, 59, 0.35);
 }
 
+/* click logout */
 .logout-btn:active {
   transform: translateY(0px);
   box-shadow: 0 5px 12px rgba(159, 198, 59, 0.2);
 }
+
 /* =========================
    HISTORIAL
 ========================= */
 
+/* item del historial */
 .historial-item {
   display: flex;
   justify-content: space-between;
@@ -417,17 +427,95 @@ footer {
   border-bottom: 1px solid #eee;
 }
 
-/* =========================
-   MENSAJES (errores y feedback)
-========================= */
-
+/* mensaje de error */
 .mensaje-error {
-  color: #dc2626; /* rojo error */
+  color: #dc2626;
   font-weight: 600;
   margin-top: 10px;
 }
 
+/* mensaje informativo */
 .mensaje-feedback {
-  color: #374151; /* gris neutro */
+  color: #374151;
   margin-top: 10px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  /* ajustes dashboard móvil */
+  .dashboard-container {
+    padding: 10px;
+  }
+
+  /* grid en columna */
+  .dashboard-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* tarjetas full width */
+  .card-solicitar,
+  .card-historial {
+    width: 100%;
+  }
+
+  /* login adaptado */
+  .login-card {
+    width: 90%;
+    margin: auto;
+  }
+
+  /* inputs móviles más grandes */
+  input {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  /* botones móviles full */
+  button {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  /* header en columna */
+  .dashboard-header {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  /* historial en columna */
+  .historial-item {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* menú móvil */
+  .menu-navbar ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  /* iconos sociales */
+  .social-icons {
+    justify-content: left;
+  }
+
+  /* hero adaptado móvil */
+  .hero-image {
+    margin-bottom: 5px;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
 }
