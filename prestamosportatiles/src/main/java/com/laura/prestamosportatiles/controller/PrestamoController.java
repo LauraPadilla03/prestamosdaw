@@ -26,56 +26,65 @@ public class PrestamoController {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    // Crear un nuevo préstamo asignando un portátil disponible
     @PostMapping
     public Prestamo crearPrestamo(@RequestBody Prestamo prestamo) {
 
-        // 1. Buscar portátil disponible
+        // Obtener el primer portátil disponible
         Portatil portatil = portatilRepository
                 .findByEstado("DISPONIBLE")
                 .stream()
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("No hay portátiles disponibles"));
 
-        // 2. Usuario fijo
+        // Usuario fijo del sistema (hardcoded)
         Usuario usuario = usuarioRepository.findById(1L)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
 
+        // Asignar usuario al préstamo
         prestamo.setUsuario(usuario);
 
-        // 3. Asignar portátil
+        // Asignar portátil al préstamo
         prestamo.setPortatil(portatil);
 
-        // 4. Guardar préstamo (CON fechas que vienen del frontend)
+        // Guardar préstamo en base de datos
         Prestamo guardado = prestamoRepository.save(prestamo);
 
-        // 5. Cambiar estado del portátil
+        // Marcar portátil como prestado
         portatil.setEstado("PRESTADO");
         portatilRepository.save(portatil);
 
-        // 6. devolver objeto completo
+        // Devolver préstamo completo guardado
         return prestamoRepository.findById(guardado.getId()).get();
     }
 
-    //  DEVOLVER PRÉSTAMO
+    // Marcar un préstamo como devuelto
     @PutMapping("/{id}/devolver")
     public Prestamo devolverPrestamo(@PathVariable Long id) {
 
+        // Buscar préstamo por ID
         Prestamo p = prestamoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Préstamo no encontrado"));
 
+        // Cambiar estado del préstamo
         p.setEstado("DEVUELTO");
 
+        // Recuperar portátil asociado
         Portatil portatil = p.getPortatil();
+
+        // Marcar portátil como disponible
         portatil.setEstado("DISPONIBLE");
         portatilRepository.save(portatil);
 
+        // Guardar cambios del préstamo
         return prestamoRepository.save(p);
     }
 
-    // 🟡 HISTORIAL DE PRÉSTAMOS POR USUARIO
+    // Obtener historial de préstamos de un usuario concreto
     @GetMapping("/usuario/{id}")
     public List<Prestamo> getPrestamosPorUsuario(@PathVariable Long id) {
 
+        // Consulta al repositorio filtrando por usuario
         return prestamoRepository.findByUsuarioId(id);
     }
 }
