@@ -23,7 +23,6 @@ function App() {
     let mes = v.slice(2, 4);
     let año = v.slice(4, 8);
 
-    // 🔧 FIX: aquí tenías un typo (NumbweparseInt 🤡)
     if (dia.length === 2 && parseInt(dia) > 31) dia = "31";
     if (mes.length === 2 && parseInt(mes) > 12) mes = "12";
 
@@ -48,6 +47,12 @@ function App() {
     hoy.setHours(0, 0, 0, 0);
 
     return fecha < hoy;
+  };
+
+  // 🚀 CONVERTIR FECHA A YYYY-MM-DD
+  const convertirFecha = (f) => {
+    const [d, m, a] = f.split("/");
+    return `${a}-${m}-${d}`;
   };
 
   const login = async () => {
@@ -105,8 +110,8 @@ function App() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        fechaInicio,
-        fechaFin,
+        fechaInicio: convertirFecha(fechaInicio),
+        fechaFin: convertirFecha(fechaFin),
       }),
     });
 
@@ -256,7 +261,6 @@ function App() {
                   Pedir portátil
                 </button>
 
-                {/* 🔥 AQUÍ ESTÁ LO QUE PEDÍAS */}
                 {error && (
                   <p className="mensaje-error">{error}</p>
                 )}
