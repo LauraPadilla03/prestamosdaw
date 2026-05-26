@@ -15,19 +15,15 @@ public class CorsConfig {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         
-        // 1. Permitir el envío de cookies/auth headers
         config.setAllowCredentials(true);
         
-        // 2. DOMINIO EXACTO DE TU VERCEL (asegúrate de que sea la URL actual)
-        config.setAllowedOrigins(Arrays.asList("https://prestamosdaw-bcg6dowkl-tfg-prestamos.vercel.app"));
+        // Esta línea permite CUALQUIER subdominio de vercel.app
+        config.setAllowedOriginPatterns(Arrays.asList("https://*.vercel.app", "http://localhost:5173"));
         
-        // 3. Permitir todos los headers y métodos para que el "preflight" (OPTIONS) pase
         config.setAllowedHeaders(Arrays.asList("*"));
         config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         
-        // 4. Aplicar esta configuración a todas las rutas
         source.registerCorsConfiguration("/**", config);
-        
         return new CorsFilter(source);
     }
 }
