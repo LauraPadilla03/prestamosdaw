@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.laura.prestamosportatiles.Usuario;
 import com.laura.prestamosportatiles.repository.UsuarioRepository;
-
+@CrossOrigin(origins = "https://prestamosdaw-fv4bim190-tfg-prestamos.vercel.app")
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
