@@ -112,7 +112,7 @@ Proyecto realizado de forma individual como parte del ciclo formativo DAW.
 
 Agradezco al profesorado por la guía durante el desarrollo del proyecto y a los recursos utilizados.
 
-También agradezco a mi compañera y amiga Diana por el apoyo y la motivación durante el desarrollo del proyecto.
+También agradezco a mi compañera y amiga Diana por el apoyo y motivación cuando lo he necesitado.
 
 ---
 
