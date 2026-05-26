@@ -3,8 +3,8 @@ import "./App.css";
 
 function App() {
 
-  // 🌐 URL del backend (CAMBIA ESTO por tu Render)
-  const API_URL = "https://TU-BACKEND.onrender.com";
+  //  URL del backend 
+  const API_URL = "https://prestamos-backend-gkpo.onrender.com";
 
   // Estado del usuario (login)
   // Guarda lo que escribe el usuario en el input de nombre
