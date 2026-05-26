@@ -3,6 +3,9 @@ import "./App.css";
 
 function App() {
 
+  // 🌐 URL del backend (CAMBIA ESTO por tu Render)
+  const API_URL = "https://TU-BACKEND.onrender.com";
+
   // Estado del usuario (login)
   // Guarda lo que escribe el usuario en el input de nombre
   const [usuario, setUsuario] = useState("");
@@ -86,7 +89,7 @@ function App() {
   // Login contra backend
   // Hace petición al endpoint de autenticación
   const login = async () => {
-    const res = await fetch("http://localhost:8080/auth/login", {
+    const res = await fetch(`${API_URL}/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -142,7 +145,7 @@ function App() {
     }
 
     // Petición al backend para crear préstamo
-    const res = await fetch("http://localhost:8080/prestamos", {
+    const res = await fetch(`${API_URL}/prestamos`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -158,7 +161,7 @@ function App() {
 
   // Marcar préstamo como devuelto
   const devolverPortatil = async (id) => {
-    await fetch(`http://localhost:8080/prestamos/${id}/devolver`, {
+    await fetch(`${API_URL}/prestamos/${id}/devolver`, {
       method: "PUT",
     });
 
@@ -169,7 +172,7 @@ function App() {
   // Cargar historial de préstamos del usuario
   const cargarPrestamos = async () => {
     const res = await fetch(
-      `http://localhost:8080/prestamos/usuario/${usuarioLogueado.id}`
+      `${API_URL}/prestamos/usuario/${usuarioLogueado.id}`
     );
 
     const data = await res.json();
@@ -183,7 +186,6 @@ function App() {
       {!usuarioLogueado ? (
         <div className="landing">
 
-          {/* Barra superior redes sociales */}
           <div className="top-header">
             <div className="social-icons">
               <a href="https://www.facebook.com/vedrunasevilla/">
@@ -198,15 +200,12 @@ function App() {
             </div>
           </div>
 
-          {/* Logo */}
           <div className="logo-section">
             <img src="/Logo-VS-1.png" alt="Logo" />
           </div>
 
-          {/* Separador visual */}
           <div className="separator-line"></div>
 
-          {/* Menú navegación */}
           <nav className="menu-navbar">
             <ul className="menu">
               <li><a href="#top">INICIO</a></li>
@@ -215,12 +214,10 @@ function App() {
             </ul>
           </nav>
 
-          {/* Imagen principal */}
           <section className="hero-image" id="top">
             <img src="/hero.png" alt="Instituto" />
           </section>
 
-          {/* Login */}
           <div id="solicitud-form" className="scroll-area">
             <div className="login-card">
 
@@ -250,7 +247,6 @@ function App() {
             </div>
           </div>
 
-          {/* Footer */}
           <footer id="contacto">
             <h3>Contacto</h3>
             <p>Correo: laura.padilla@a.vedrunasevillasj.es</p>
@@ -260,7 +256,6 @@ function App() {
       ) : (
         <div className="dashboard-container">
 
-          {/* Header dashboard */}
           <div className="dashboard-header">
             <div className="dashboard-logo">
               <img src="/Logo-VS-1.png" alt="Logo" />
@@ -271,7 +266,6 @@ function App() {
             </button>
           </div>
 
-          {/* Contenido */}
           <div className="dashboard-content">
 
             <div className="dashboard-welcome">
@@ -281,7 +275,6 @@ function App() {
 
             <div className="dashboard-grid">
 
-              {/* Solicitar préstamo */}
               <div className="card-solicitar">
                 <h3>Solicitar préstamo</h3>
 
@@ -318,7 +311,6 @@ function App() {
                 )}
               </div>
 
-              {/* Historial */}
               <div className="card-historial">
                 <h3>Historial</h3>
 
