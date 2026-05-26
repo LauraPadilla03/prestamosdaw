@@ -6,8 +6,4 @@ COPY . .
 
 RUN ./gradlew clean build -x test
 
-RUN cp build/libs/*.jar app.jar
-
-EXPOSE 8080
-
-ENTRYPOINT ["java","-jar","app.jar"]
+CMD ["java","-jar","build/libs/prestamosportatiles-0.0.1-SNAPSHOT.jar"]
