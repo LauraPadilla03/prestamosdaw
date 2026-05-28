@@ -1,0 +1,57 @@
+---
+
+title: Guía de Instalación
+
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Esta guía detalla los pasos necesarios para desplegar y ejecutar el proyecto en un entorno local, permitiendo la evaluación y pruebas del sistema.
+
+## Requisitos previos
+
+* **Node.js**: Versión 18 o superior.
+* **Git**: Para la gestión de versiones.
+* **npm**: Incluido con Node.js.
+
+## Instalación
+
+<Steps>
+
+1. **Clonar el repositorio**
+
+   ```bash
+   git clone https://github.com/LauraPadilla03/prestamosdaw.git
+   ```
+
+2. **Acceder al directorio del proyecto**
+
+   ```bash
+   cd prestamos-frontend
+   ```
+
+3. **Instalar dependencias**
+
+   ```bash
+   npm install
+   ```
+
+4. **Ejecutar el servidor de desarrollo**
+
+   ```bash
+   npm run dev
+   ```
+
+</Steps>
+
+## Acceso a la aplicación
+
+Una vez iniciado el servidor, abre el navegador y accede a:
+
+```txt
+http://localhost:4321
+```
+
+<Aside type="tip" title="Consejo">
+Si el puerto 4321 está ocupado, Astro utilizará automáticamente otro puerto disponible.
+</Aside>

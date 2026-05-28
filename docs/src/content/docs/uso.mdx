@@ -1,0 +1,55 @@
+---
+title: Guía de Uso
+---
+
+import { Tabs, TabItem, Card } from '@astrojs/starlight/components';
+
+Esta guía describe el flujo de trabajo en el sistema para los diferentes perfiles de usuario.
+
+
+
+## Perfiles del sistema
+
+<Tabs>
+
+<TabItem label="Usuario">
+    Los usuarios pueden realizar las siguientes acciones dentro del sistema:
+    - **Autenticación:** Inicio de sesión en la plataforma para acceder a su área personal.
+    - **Reserva de dispositivos:** Solicitud de préstamo de portátiles disponibles.
+    - **Devolución de dispositivos:** Registro de la entrega de los equipos previamente prestados.
+    - **Consulta de disponibilidad:** Visualización en tiempo real del estado de los dispositivos.
+    - **Historial de préstamos:** Acceso al registro de sus dispositivos prestados, incluyendo fechas de inicio y devolución.
+    - **Perfil de usuario:** Consulta del estado de sus solicitudes y datos asociados a su cuenta.
+  </TabItem>
+  <TabItem label="Administrador (conceptual)">
+    El rol de administrador está definido a nivel de diseño del sistema y base de datos, aunque no se encuentra implementado en la interfaz actual.
+
+    Funcionalidades previstas:
+    - Gestión de inventario de dispositivos
+    - Control de usuarios
+    - Gestión de préstamos
+    - Visualización de reportes
+
+    Estas funcionalidades se consideran parte de una ampliación futura del sistema.
+  </TabItem>
+
+  
+</Tabs>
+
+### Pasos para un préstamo
+
+<Card title="1. Selección de equipo" icon="magnifying-glass">
+  Accede al catálogo y filtra los dispositivos disponibles según tus necesidades.
+</Card>
+
+<Card title="2. Solicitud de reserva" icon="document">
+  Rellena el formulario con la fecha y hora. La solicitud quedará registrada en el sistema.
+</Card>
+
+<Card title="3. Validación y Entrega" icon="approve-check">
+  El administrador revisará la solicitud. Una vez aprobada, el estado cambiará a "Aceptada".
+</Card>
+
+---
+
+> **Nota:** Asegúrate de verificar el estado de tus solicitudes en la sección "Mi Perfil" antes de acudir a recoger el dispositivo.

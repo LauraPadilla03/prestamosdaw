@@ -1,0 +1,35 @@
+---
+title: Acceso y Despliegue
+---
+
+Esta sección proporciona acceso a los entornos de producción donde se encuentra alojada la aplicación, permitiendo la evaluación funcional del sistema.
+
+### Interfaz de Usuario (Frontend)
+El frontend ha sido desplegado en Vercel, ofreciendo una experiencia optimizada para el usuario final:
+
+> **[Acceder a la Aplicación](https://prestamosdaw.vercel.app/)**
+
+### Servicio de API (Backend)
+El backend, encargado de la gestión de la lógica de negocio y persistencia de datos, está desplegado de forma independiente en Render:
+
+> **[Acceder a la API](https://prestamos-backend-gkpo.onrender.com)**
+
+---
+
+### Arquitectura del Despliegue
+El sistema utiliza una arquitectura basada en servicios independientes. El frontend consume de forma asíncrona los datos proporcionados por la API, garantizando un rendimiento eficiente y una separación clara de responsabilidades.
+
+
+
+### Credenciales de acceso
+Para facilitar la evaluación de las funcionalidades privadas (panel de administración, gestión de préstamos, etc.), se han habilitado las siguientes credenciales de prueba:
+
+| Rol | Usuario | Contraseña |
+| :--- | :--- | :--- |
+| **Administrador** | `admin` | `admin123` |
+| **Usuario estándar** | `Laura Padilla Cobacho` | `1234` |
+
+> **Nota:** Estas credenciales están conectadas a la base de datos de producción. Por favor, utilícelas únicamente con fines de evaluación.
+---
+
+*Nota: Para el proceso de auditoría y revisión del código fuente, por favor consulte la sección de [Instalación Local](/instalacion).*

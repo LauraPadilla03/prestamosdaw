@@ -1,0 +1,92 @@
+/* Centrar y estilizar la información del autor */
+.header-info {
+  text-align: center;
+  margin: 2rem 0 4rem;
+  font-size: 1.2rem;
+  color: var(--sl-color-gray-3);
+}
+
+.header-info strong {
+  color: var(--sl-color-white);
+  font-size: 1.5rem;
+}
+
+/* Mejora visual de las tarjetas */
+.card {
+  transition: transform 0.3s ease !important;
+  border: 1px solid var(--sl-color-gray-5) !important;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: var(--sl-color-accent) !important;
+}
+
+/* Asegurar que el título destaque */
+[data-template="splash"] h1 {
+  background: linear-gradient(135deg, #3b82f6, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* --- ESTILOS PARA LA GUÍA DE USO --- */
+
+/* Estilo para el contenedor de las pestañas */
+.sl-template-doc astro-tabs {
+    margin: 2rem 0;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Mejora el panel interno de las pestañas */
+.sl-template-doc .tab-panel {
+    padding: 1.5rem;
+    background-color: var(--sl-color-gray-7);
+}
+
+/* Estilo consistente para las tarjetas dentro de la guía */
+.sl-template-doc .sl-card {
+    border-left: 4px solid var(--sl-color-accent) !important;
+    background-color: var(--sl-color-gray-6);
+}
+
+/* Ajuste de espaciado para las listas dentro de las tarjetas */
+.sl-template-doc .sl-card li {
+    margin-bottom: 0.5rem;
+    color: var(--sl-color-gray-2);
+}
+
+/* --- ESTILOS PARA GUÍAS TÉCNICAS (INSTALACIÓN Y ACCESO) --- */
+
+/* Estilo para los pasos (Steps) */
+.starlight-steps {
+    --sl-steps-border-color: var(--sl-color-accent);
+    --sl-steps-number-bg: var(--sl-color-accent);
+    --sl-steps-number-color: var(--sl-color-white);
+    margin: 2rem 0;
+}
+
+/* Estilo para los bloques de código (Bash/Env) */
+pre {
+    background-color: var(--sl-color-gray-7) !important;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 8px;
+    padding: 1.2rem !important;
+    margin: 1rem 0 !important;
+}
+
+/* Estilo para el texto dentro del bloque .env */
+code {
+    color: var(--sl-color-orange) !important;
+}
+
+/* Estilo para los avisos (Aside) */
+.sl-aside {
+    border-left: 4px solid var(--sl-color-accent) !important;
+    background-color: var(--sl-color-gray-7);
+    padding: 1rem;
+    border-radius: 0 8px 8px 0;
+}
+
+/* Mejora visual de los enlaces internos */
