@@ -14,34 +14,29 @@ Esta guía detalla los pasos necesarios para desplegar y ejecutar el proyecto en
 * **Git**: Para la gestión de versiones.
 * **npm**: Incluido con Node.js.
 
-## Instalación
+## Configuración del backend y frontend
 
 <Steps>
 
-1. **Clonar el repositorio**
+1. Acceder a la carpeta del backend  
+         ```bash
+      cd ../prestamosportatiles
 
-   ```bash
-   git clone https://github.com/LauraPadilla03/prestamosdaw.git
-   ```
+2. Ejecutar el backend  
+         ```bash
+      ./gradlew bootRun  
+         
+3. Acceder a la carpeta del frontend  
+         ```bash
+      cd ../prestamos-frontend 
 
-2. **Acceder al directorio del proyecto**
+4. Instalar dependencias   
+         ```bash
+      npm install
 
-   ```bash
-   cd prestamos-frontend
-   ```
-
-3. **Instalar dependencias**
-
-   ```bash
-   npm install
-   ```
-
-4. **Ejecutar el servidor de desarrollo**
-
-   ```bash
-   npm run dev
-   ```
-
+5. Ejecutar el servidor de desarrollo  
+         ```bash
+      npm run dev
 </Steps>
 
 ## Acceso a la aplicación
