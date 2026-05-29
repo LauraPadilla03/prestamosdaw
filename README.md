@@ -94,9 +94,9 @@ Desarrollar una aplicación full stack aplicando React en frontend y Spring Boot
 
 ## 🔗 Enlaces
 
-- Documentación (Starlight): pendiente  
-- Figma: pendiente  
-- GitHub: añadir enlace aquí  
+- Documentación (Starlight): https://github.com/LauraPadilla03/prestamosdaw/tree/main/docs
+- Figma: (https://www.figma.com/proto/aXL68UrdvgGPIlMQNFNWjw/TFG?node-id=1001-2&t=MNy2Lhogc0HB91qa-1)  
+- GitHub:https://github.com/LauraPadilla03/prestamosdaw
 
 ---
 
