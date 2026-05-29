@@ -1,18 +1,26 @@
 ---
 title: Acceso y Despliegue
 ---
+import { Steps, Aside } from '@astrojs/starlight/components';
 
 Esta sección proporciona acceso a los entornos de producción donde se encuentra alojada la aplicación, permitiendo la evaluación funcional del sistema.
+
+
+### Servicio de API (Backend)
+El backend, encargado de la gestión de la lógica de negocio y persistencia de datos, está desplegado de forma independiente en Render.
+
+Para poder ver el frontend desplegado, primero se debe acceder a este link donde se mostrará como el backend está iniciando:
+
+> **[Acceder a la API](https://prestamos-backend-gkpo.onrender.com)**
+
 
 ### Interfaz de Usuario (Frontend)
 El frontend ha sido desplegado en Vercel, ofreciendo una experiencia optimizada para el usuario final:
 
+Una vez arrancado el backend, acceda a este link que muestra el frontend del proyecto: 
 > **[Acceder a la Aplicación](https://prestamosdaw.vercel.app/)**
 
-### Servicio de API (Backend)
-El backend, encargado de la gestión de la lógica de negocio y persistencia de datos, está desplegado de forma independiente en Render:
 
-> **[Acceder a la API](https://prestamos-backend-gkpo.onrender.com)**
 
 ---
 
@@ -24,12 +32,16 @@ El sistema utiliza una arquitectura basada en servicios independientes. El front
 ### Credenciales de acceso
 Para facilitar la evaluación de las funcionalidades privadas (panel de administración, gestión de préstamos, etc.), se han habilitado las siguientes credenciales de prueba:
 
+Para una experiencia compl
 | Rol | Usuario | Contraseña |
 | :--- | :--- | :--- |
-| **Administrador** | `admin` | `admin123` |
 | **Usuario estándar** | `Laura Padilla Cobacho` | `1234` |
+| **Administrador** | `admin` | `admin123` |
 
-> **Nota:** Estas credenciales están conectadas a la base de datos de producción. Por favor, utilícelas únicamente con fines de evaluación.
+
+<Aside type="tip" title="Consejo">
+Para una experiencia inmersiva completa, usar el rol de Usuario indicado arriba. 
+</Aside>
 ---
 
 *Nota: Para el proceso de auditoría y revisión del código fuente, por favor consulte la sección de [Instalación Local](/instalacion).*
